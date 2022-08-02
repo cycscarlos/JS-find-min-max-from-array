@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --header-height: 6rem;
+  --font-text: "Open Sans Condensed", sans-serif;
+
+  --color-main: #9d8d6c;
+  --color-bg: #29445a;
+  --color-text: #29445a;
+  --font-header: "Times New Roman", cursive;
+
+  --step--2: clamp(0.69rem, 0.65rem + 0.21vw, 0.8rem);
+  --step--1: clamp(0.83rem, 0.77rem + 0.33vw, 1rem);
+  --step-0: clamp(1rem, 0.9rem + 0.49vw, 1.25rem);
+}
+body {
+  margin: var(--header-height) 0 0 0;
+}
+.header {
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0.625em 3.125em;
+  background-color: var(--color-bg);
+  font-family: var(--font-header);
+  box-shadow: 0 5px 25px 10px rgba(0, 0, 0, 0.5);
+}
+.header-container {
+  display: grid;
+  grid-template-areas: "profile phone";
+  grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+}
+.profile {
+  grid-area: profile;
+  display: flex;
+  align-items: center;
+  justify-self: self-start;
+}
+.logo img {
+  border-radius: 50%;
+}
+.logotext {
+  margin-left: 1em;
+  font-size: var(--step--1);
+  color: var(--color-main);
+  font-weight: 500;
+}
+.logotext span {
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+.logotext span,
+.phone {
+  font-size: var(--step--2);
+  color: var(--color-main);
+}
+.phone {
+  grid-area: phone;
+  justify-self: flex-end;
+  align-self: center;
+}
+.phone [class*="fa fa-"]:before {
+  color: whitesmoke;
+  top: 0.125em;
+  right: 0.3em;
+  margin-right: 0.3em;
+}
+.phone p {
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/*: Ancho mayores a 768px  (iPads, laptops y PCs) */
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0.625em 2em;
+  }
+  .logotext {
+    margin: 0 0 0 1em;
+  }
+}
+
+/*: Ancho entre 414px y 500px  (viewport mínimo del browser) */
+@media screen and (min-width: 414px) and (max-width: 500px) {
+  .header {
+    padding: 0.625em 1em;
+  }
+}
+
+/*: Ancho menores a 414px (smartphones) */
+@media screen and (max-width: 414px) {
+  :root {
+    --header-height: 8.5rem;
+  }
+  .header {
+    padding: 0.625em 1em;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .profile {
+    flex-direction: column;
+    text-align: center;
+  }
+  .logotext {
+    margin: 0.5em 0 0 0.5em;
+  }
+}
